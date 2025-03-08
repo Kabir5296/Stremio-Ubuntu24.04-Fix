@@ -18,6 +18,7 @@ dpkg-deb -R stremio_4.4.168-1_amd64.deb stremio_extract
 # Modify the control file to change dependency from libmpv1 to libmpv2
 echo "Modifying dependencies..."
 sed -i 's/libmpv1 (>=0.30.0)/libmpv2/g' stremio_extract/DEBIAN/control
+sed -i 's/\x6C\x69\x62\x6D\x70\x76\x2E\x73\x6F\x2E\x31/\x6C\x69\x62\x6D\x70\x76\x2E\x73\x6F\x2E\x32/g' stremio_extract/opt/stremio/stremio
 
 # Display the change for verification
 echo "Modified dependencies:"
@@ -34,6 +35,8 @@ sudo dpkg -i stremio_modified.deb
 # Fix any remaining dependencies
 echo "Resolving any additional dependencies..."
 sudo apt install -f -y
+wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+sudo dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb 
 
 echo "Stremio installation completed!"
 
