@@ -7,3 +7,8 @@ The way around is to simply create another .deb file from the original stremio d
 chmod +x ./install_stremio.sh
 ./install_stremio.sh
 ```
+
+Also, you can run the following ```wget``` command:
+```
+wget -O - https://raw.githubusercontent.com/Kabir5296/Stremio-Ubuntu24.04-Fix/refs/heads/main/install_stremio.sh | bash
+```
